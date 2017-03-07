@@ -29,25 +29,29 @@ class Clock extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {date: new Date()};
+		this.intervals = this.props.intervals;		
+		console.log(this.props);
 	}
 	componentDidMount(){
 		const self = this;
-		this.timerID = setInterval( () => this.tick(), this.props.interval);
+		this.timerID = setInterval( () => this.tick(), this.props.intervals);
 	}
 	componentWillUnmount(){
 		clearInterval(this.timerID);
-	}
+	}	
 	tick(){
 		this.setState({date:new Date()});
 	}
+
 	render() {
+		
 		return (
-		      <div>
+			<div>
 		      	<LoggingButton />
-		        <h1>Hello, world!</h1>
+		        <h1>Hello, world! {this.props.index}</h1>
 		        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
 		      </div>
-		    );
+			);
 	}
 };
 export default Clock;
