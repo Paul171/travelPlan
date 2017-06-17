@@ -5,10 +5,12 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
+      uri: 'mongodb://paul:901701@ds129442.mlab.com:29442/heroku_0jkbq3sz'
       database: travel_plan_development
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
+        - ds129442.mlab.com:29442
         - localhost:27017
       options:
         # Change the default write concern. (default = { w: 1 })
