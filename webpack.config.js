@@ -1,60 +1,65 @@
 const path = require('path');
 const webpack = require('webpack');
-
+// configure source and distribution folder paths
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const paths = require('./paths');
 module.exports = {
-	entry: [
-		'webpack-dev-server/client?http://localhost:8081', // WebpackDevServer host and port
-		'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-		'./index.jsx'
+	entry: {
+		'app': ['babel-polyfill' ,'./index.jsx'],
 		// the entry point of our app
-	],
+	},
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['.js', '.jsx'],
+		modules: [ paths.appSource, paths.appModules ]
 	},
 	output: {
-		filename: 'bundle.js',
+		filename: '[name].js',
 		// the output bundle
 
-		path: path.resolve(__dirname, 'dist'),
+		path: paths.appBuild,
 
 		publicPath: '/'
 			// necessary for HMR to know where to load the hot update chunks
 	},
 
-	context: path.resolve(__dirname, 'src'),
+	context: paths.appSource,
 
-	devtool: 'eval',
+	devtool: 'source-map',
 	devServer: {
 
-		hot: true,
-		// enable HMR on the server
-
-		contentBase: path.join(__dirname, 'dist'),
-		// match the output path
-		inline: true,
-		publicPath: '/'
-			// match the output `publicPath`
-	},
+		contentBase: "dist",
+    	historyApiFallback: true,
+    	port: 8080
+   	},
 	module: {
 		rules: [{
 			test: /\.jsx?$/,
 			use: [
 				{
-					loader: 'react-hot-loader'
-				},
-				{
-					loader: 'babel-loader',
-					options: {
-						presets:['react','es2015','stage-0']
-					}
+					loader: 'babel-loader'
 				},
 				
 			],
-			include: path.join(__dirname, 'src'),
 			exclude: /node_modules/
-		}]
+		},
+		{
+        test: /\.css$/,
+	        use: [
+	          { loader: "style-loader" },
+	          { loader: "css-loader" }
+	        ]
+	      },{
+	     test: /\.(gif|png|jpg)$/,
+	     use: [ 'file-loader' ]
+	  },
+	  {
+	     test: /\.(eot|ttf|woff|woff2|svg)$/,
+	     use: [ 'url-loader' ]
+	  }]
 	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+	plugins:[
+		 new HtmlWebpackPlugin({
+            template: path.join(paths.appBuild, 'index.html')
+        }),
 	]
 }
