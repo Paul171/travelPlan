@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 ruby "2.2.0"
-
-
+# for heroku timeout issue
+gem "heroku-forward"
+gem "thin"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use SCSS for stylesheets
