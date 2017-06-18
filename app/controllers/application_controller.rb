@@ -5,9 +5,6 @@ class ApplicationController < ActionController::Base
 	skip_before_action :verify_authenticity_token
 	before_action :add_allow_credentials_headers
 	def add_allow_credentials_headers
-		request.headers.each do |value|
-			puts "value: #{value} "
-		end
 		puts "Origin: #{request.headers['Origin']}, Method: #{request.headers['Access-Control-Request-Method']}"
 	    response.headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'   
 	    # response.headers['Access-Control-Allow-Credentials'] = 'true'
