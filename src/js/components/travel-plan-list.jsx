@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardHeader } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
-import { red } from 'material-ui/styles/colors';
+import { red } from 'material-ui/colors';
 import Collapse from 'material-ui/transitions/Collapse';
 import Avatar from 'material-ui/Avatar';
 import FavoriteIcon from 'material-ui-icons/Favorite';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import IconButton from 'material-ui/IconButton';
 import classnames from 'classnames';
-const styleSheet = createStyleSheet('TravelPlanList', theme => ({
+const styleSheet = theme => ({
   card: { maxWidth: 400 },
   expand: {
     transform: 'rotate(0deg)',
@@ -23,7 +23,8 @@ const styleSheet = createStyleSheet('TravelPlanList', theme => ({
   },
   avatar: { backgroundColor: red[500] },
   flexGrow: { flex: '1 1 auto' },
-}));
+});
+const avatarStyle = { backgroundColor: red[500] };
 
 class TravelPlanList extends React.Component{
 	constructor(props){

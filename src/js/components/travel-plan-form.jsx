@@ -7,7 +7,7 @@ import InputLabel from 'material-ui/Input/InputLabel';
 import FormControl from 'material-ui/Form/FormControl';
 import FormHelperText from 'material-ui/Form/FormHelperText';
 import { savePlan } from '../actions/save-plan';
-const styleSheet = createStyleSheet('TravelPlanForm', theme => ({
+const styleSheet = theme => ({
   input: {
     margin: theme.spacing.unit,
     display: "block",
@@ -17,7 +17,7 @@ const styleSheet = createStyleSheet('TravelPlanForm', theme => ({
     display: 'flex',
     flexWrap: 'wrap',
   }
-}));
+});
 class TravelPlanForm extends React.Component{
 	
 	constructor(props){

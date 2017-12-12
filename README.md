@@ -14,7 +14,7 @@
 
 ## Improvements/Enhancement
 * add Web component/Polymer in the future development
-
+* loading/checking the redis data as the server start
 ## MongoDB for data storage
 * `rails g mongoid:config` : create config/mongoid.yml file
 * `rails g model <class_name> <field_name>...`: to create `app/models/<class_name>.rb`, test files under `test/models` and `test/fixures`. You will see the field and class in there

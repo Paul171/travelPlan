@@ -9,7 +9,7 @@ import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import { MenuItem } from 'material-ui/Menu';
-const styleSheet = createStyleSheet('Header', {
+const styleSheet = theme=> ({
 	  root: {
 	    position: 'relative',
 	    marginTop: 30,
@@ -46,7 +46,7 @@ class Header extends React.Component{
 			<div>
 			<AppBar className={this.props.classes.appBar}>
 		        <Toolbar>
-		          <IconButton contrast onClick={this.toggleDrawer}>
+		          <IconButton color="contrast" aria-label="Menu" onClick={this.toggleDrawer}>
 		            <MenuIcon />
 		          </IconButton>
 		          <Typography type="title" colorInherit className={this.props.classes.flex}>{this.props.title}</Typography>

@@ -10,7 +10,6 @@ import { TravelPlanContainer } from './components/travel-plan-container';
 import Header  from './components/travel-plan-header';
 import TravelPlanForm from './components/travel-plan-form';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import createPalette from 'material-ui/styles/palette';
 import 'typeface-roboto';
 
 
@@ -20,11 +19,7 @@ const dispatchToProps = dispatch => bindActionCreators({
 	getMenu,
 	savePlan
 },dispatch);
-const theme = createMuiTheme({
-  palette: createPalette({
-    type: 'light', // Switching the dark mode on is a single property value change.
-  }),
-});
+const theme = createMuiTheme();
 class TravelPlan extends React.Component{
 	constructor(props){
 		super(props);
